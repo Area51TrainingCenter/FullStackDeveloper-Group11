@@ -1,0 +1,9 @@
+<h2>{{nombre}}</h2>
+<span *ngIf="desactivado">Profesor de Fullstack</span>
+<br>
+<p *ngFor="let curso of cursos; let indice = 'index+1'">
+	{{indice}} - {{curso}}
+</p>
+<input type="text" placeholder="ingrese un nombre" (input)="capturar($event)">
+<button (click)="asignar()">Asignar nombre</button>
+<button [disabled]="desactivado">Mostrar datos</button>

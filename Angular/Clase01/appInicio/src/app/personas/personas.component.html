@@ -1,0 +1,10 @@
+<input type="text" (input)="capturar($event.target.value)">
+<button (click)="agregar()">Agregar</button>
+<table *ngIf="personas.length">
+	<tr>
+		<th>Nombre</th>
+	</tr>
+	<tr *ngFor="let persona of personas">
+		<td>{{persona}}</td>
+	</tr>
+</table>
