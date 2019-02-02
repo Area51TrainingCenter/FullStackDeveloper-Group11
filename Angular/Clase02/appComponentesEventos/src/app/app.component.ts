@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ILogin } from './modelos/login.interface';
 
 @Component({
 	selector: 'app-root',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	logueado: boolean = false
+	correoDelUsuario: string
 
-	cambioEstadoUsuario(estado: boolean) {
-		this.logueado = estado
+	cambioEstadoUsuario(datos: ILogin) {
+		this.logueado = datos.estado
+		this.correoDelUsuario = datos.correo
 	}
 }

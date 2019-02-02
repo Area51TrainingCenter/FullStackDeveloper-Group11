@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ILogin } from '../modelos/login.interface';
 
 @Component({
 	selector: 'app-cabecera',
@@ -7,14 +8,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-	@Output() onCerrarSesion = new EventEmitter<boolean>()
+	@Input("correoUsuario") correo: string
+
+	@Output() onCerrarSesion = new EventEmitter<ILogin>()
 	constructor() { }
 
 	ngOnInit() {
 	}
 
 	logout() {
-		this.onCerrarSesion.emit(false)
+		this.onCerrarSesion.emit({ correo: "", estado: false })
 	}
 
 }

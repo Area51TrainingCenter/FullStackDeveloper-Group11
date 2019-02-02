@@ -1,4 +1,4 @@
-<app-cabecera *ngIf="logueado" (onCerrarSesion)="cambioEstadoUsuario($event)">
+<app-cabecera *ngIf="logueado" (onCerrarSesion)="cambioEstadoUsuario($event)" [correoUsuario]="correoDelUsuario">
 </app-cabecera>
 
 <app-login *ngIf="!logueado" (onIngresar)="cambioEstadoUsuario($event)">
