@@ -1,2 +1,3 @@
+<app-cabecera *ngIf="logueado" (onCerrarSesion)="logueado=false"></app-cabecera>
 <app-login *ngIf="!logueado" (onIngresar)="logueado=true"></app-login>
 <app-listado *ngIf="logueado"></app-listado>

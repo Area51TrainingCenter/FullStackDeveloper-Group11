@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
 	loguearse() {
 		this.onIngresar.emit()
-		console.log("Usuario logueado")
+		//console.log("Usuario logueado")
 	}
 
 }
