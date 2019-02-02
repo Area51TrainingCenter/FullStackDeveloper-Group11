@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	logueado: boolean = false
+
+	cambioEstadoUsuario(estado: boolean) {
+		this.logueado = estado
+	}
 }

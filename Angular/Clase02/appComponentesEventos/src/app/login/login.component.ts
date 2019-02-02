@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-	@Output() onIngresar = new EventEmitter()
+	@Output() onIngresar = new EventEmitter<boolean>()
 
 	constructor() { }
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	loguearse() {
-		this.onIngresar.emit()
+		this.onIngresar.emit(true)
 		//console.log("Usuario logueado")
 	}
 

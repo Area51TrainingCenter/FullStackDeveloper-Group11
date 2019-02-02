@@ -7,14 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-	@Output() onCerrarSesion = new EventEmitter()
+	@Output() onCerrarSesion = new EventEmitter<boolean>()
 	constructor() { }
 
 	ngOnInit() {
 	}
 
 	logout() {
-		this.onCerrarSesion.emit()
+		this.onCerrarSesion.emit(false)
 	}
 
 }

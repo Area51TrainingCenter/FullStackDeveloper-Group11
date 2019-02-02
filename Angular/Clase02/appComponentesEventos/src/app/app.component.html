@@ -1,3 +1,7 @@
-<app-cabecera *ngIf="logueado" (onCerrarSesion)="logueado=false"></app-cabecera>
-<app-login *ngIf="!logueado" (onIngresar)="logueado=true"></app-login>
+<app-cabecera *ngIf="logueado" (onCerrarSesion)="cambioEstadoUsuario($event)">
+</app-cabecera>
+
+<app-login *ngIf="!logueado" (onIngresar)="cambioEstadoUsuario($event)">
+</app-login>
+
 <app-listado *ngIf="logueado"></app-listado>
