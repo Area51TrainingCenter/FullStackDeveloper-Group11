@@ -1,0 +1,6 @@
+<div class="container">
+	<app-cabecera *ngIf="usuarioLogueado"></app-cabecera>
+	<app-login *ngIf="!usuarioLogueado"></app-login>
+	<app-agregar-libro *ngIf="usuarioLogueado"></app-agregar-libro>
+	<app-listado-libros *ngIf="usuarioLogueado"></app-listado-libros>
+</div>
