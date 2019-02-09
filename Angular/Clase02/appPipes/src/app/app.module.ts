@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ReductorPipe } from './reductor.pipe';
+import { ReductorPalabras } from './reductor-palabras.pipe';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		ReductorPipe
+		ReductorPipe,
+		ReductorPalabras
 	],
 	imports: [
 		BrowserModule

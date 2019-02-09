@@ -17,7 +17,7 @@
 			<tr *ngFor="let pelicula of peliculas">
 				<td>{{pelicula.id}}</td>
 				<td>{{pelicula.titulo}}</td>
-				<td>{{pelicula.sinopsis | reductor:260:"..."}}</td>
+				<td>{{pelicula.sinopsis | reductorPalabras:20:" ..."}}</td>
 				<td>{{pelicula.actores}}</td>
 				<td>{{pelicula.anno}}</td>
 			</tr>
