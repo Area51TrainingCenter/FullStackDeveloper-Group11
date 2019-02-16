@@ -1,4 +1,5 @@
 <div class="container">
+  <app-cabecera *ngIf="usuarioLogueado"></app-cabecera>
   <router-outlet></router-outlet>
   <!-- 	<app-cabecera *ngIf="usuarioLogueado"></app-cabecera>
 	<app-login *ngIf="!usuarioLogueado"></app-login>

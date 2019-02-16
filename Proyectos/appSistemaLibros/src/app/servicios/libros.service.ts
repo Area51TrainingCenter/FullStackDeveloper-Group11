@@ -2,35 +2,45 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { ILibro } from '../modelos/libro.interface';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class LibrosService {
 
-	private libros: ILibro[] = []
+  private libros: ILibro[] = []
 
-	onActualizacionCantidad: EventEmitter<number> = new EventEmitter<number>()
-	onCambioLibros: EventEmitter<any> = new EventEmitter<any>()
+  onActualizacionCantidad: EventEmitter<number> = new EventEmitter<number>()
+  onCambioLibros: EventEmitter<any> = new EventEmitter<any>()
 
-	constructor() { }
+  constructor() { }
 
-	listar(): ILibro[] {
-		return this.libros
-	}
+  listar(): ILibro[] {
+    return this.libros
+  }
 
-	insertar(libro: ILibro) {
-		this.libros.push(libro)
-		this.onActualizacionCantidad.emit(this.libros.length)
-		this.onCambioLibros.emit()
-	}
+  detallar(id: number): ILibro {
+    const libro = Object.assign({}, this.libros[id])
 
-	obtenerCantidad(): number {
-		return this.libros.length
-	}
+    return libro
+  }
 
-	eliminar(posicion: number) {
-		this.libros.splice(posicion, 1)
+  grabar(id: number, libro: ILibro) {
+    this.libros[id] = libro
+  }
 
-		this.onActualizacionCantidad.emit(this.libros.length)
-		this.onCambioLibros.emit()
-	}
+  insertar(libro: ILibro) {
+    this.libros.push(libro)
+    this.onActualizacionCantidad.emit(this.libros.length)
+    this.onCambioLibros.emit()
+  }
+
+  obtenerCantidad(): number {
+    return this.libros.length
+  }
+
+  eliminar(posicion: number) {
+    this.libros.splice(posicion, 1)
+
+    this.onActualizacionCantidad.emit(this.libros.length)
+    this.onCambioLibros.emit()
+  }
 }

@@ -1,0 +1,15 @@
+<p>
+  id: {{idRuta}}
+</p>
+<a [routerLink]="['/cursos', 'edicion',100]">Ir al registro 100</a>
+<br>
+<p>
+  curso: {{curso}}
+</p>
+<p>
+  rol: {{rol}}
+</p>
+<a [routerLink]="['/cursos', 'edicion',200]" [queryParams]="{curso:'algebra',cantidad:30}" fragment="admin">Ir al
+  registro 200</a>
+<br>
+<button (click)="irAlRegistro(300)">Ir al registro 300</button>

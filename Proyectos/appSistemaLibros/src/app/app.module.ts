@@ -8,13 +8,15 @@ import { ListadoLibrosComponent } from './listado-libros/listado-libros.componen
 import { AgregarLibroComponent } from './agregar-libro/agregar-libro.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { ItemComponent } from './item/item.component';
+import { EdicionLibroComponent } from './edicion-libro/edicion-libro.component';
 
 const rutas: Route[] = [
   { path: "", component: LoginComponent },
   {
     path: "libros", children: [
       { path: "", component: ListadoLibrosComponent },
-      { path: "agregar", component: AgregarLibroComponent }
+      { path: "agregar", component: AgregarLibroComponent },
+      { path: "editar/:id", component: EdicionLibroComponent }
     ]
   },
   { path: "**", redirectTo: "" }
@@ -27,7 +29,8 @@ const rutas: Route[] = [
     ListadoLibrosComponent,
     AgregarLibroComponent,
     CabeceraComponent,
-    ItemComponent
+    ItemComponent,
+    EdicionLibroComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(rutas)
