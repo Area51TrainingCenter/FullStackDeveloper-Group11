@@ -1,18 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from "@angular/router"
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ListadoLibrosComponent } from './listado-libros/listado-libros.component';
-import { AgregarLibroComponent } from './agregar-libro/agregar-libro.component';
-import { CabeceraComponent } from './cabecera/cabecera.component';
-import { ItemComponent } from './item/item.component';
+import { HomeComponent } from './home/home.component';
+import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 
-const rutas: Route[] = [
+const rutas: Array<Route> = [
   { path: "", component: LoginComponent },
-  { path: "agregar", component: AgregarLibroComponent },
-  { path: "listar", component: ListadoLibrosComponent },
+  { path: "home", component: HomeComponent },
+  //{ path: "**", component: NoEncontradoComponent }
   { path: "**", redirectTo: "" }
 ]
 
@@ -20,10 +17,8 @@ const rutas: Route[] = [
   declarations: [
     AppComponent,
     LoginComponent,
-    ListadoLibrosComponent,
-    AgregarLibroComponent,
-    CabeceraComponent,
-    ItemComponent
+    HomeComponent,
+    NoEncontradoComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(rutas)
