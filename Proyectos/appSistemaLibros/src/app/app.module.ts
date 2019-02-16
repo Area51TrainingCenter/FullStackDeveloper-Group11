@@ -11,8 +11,12 @@ import { ItemComponent } from './item/item.component';
 
 const rutas: Route[] = [
   { path: "", component: LoginComponent },
-  { path: "agregar", component: AgregarLibroComponent },
-  { path: "listar", component: ListadoLibrosComponent },
+  {
+    path: "libros", children: [
+      { path: "", component: ListadoLibrosComponent },
+      { path: "agregar", component: AgregarLibroComponent }
+    ]
+  },
   { path: "**", redirectTo: "" }
 ]
 

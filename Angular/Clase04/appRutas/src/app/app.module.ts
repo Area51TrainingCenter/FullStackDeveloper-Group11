@@ -5,10 +5,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const rutas: Array<Route> = [
   { path: "", component: LoginComponent },
-  { path: "home", component: HomeComponent },
+  {
+    path: "home", children: [
+      { path: "", component: HomeComponent },
+      { path: "perfil", component: PerfilComponent }
+    ]
+  },
   //{ path: "**", component: NoEncontradoComponent }
   { path: "**", redirectTo: "" }
 ]
@@ -18,7 +24,8 @@ const rutas: Array<Route> = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NoEncontradoComponent
+    NoEncontradoComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(rutas)
