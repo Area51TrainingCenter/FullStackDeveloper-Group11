@@ -1,11 +1,17 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
+FileList.prototype["forEach"] = function(callback){
+  [].forEach.call(this, callback)
+}
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  archivos: Array<File> = []
 
 	@ViewChild("inputNombre") nombreInput: ElementRef
 
@@ -21,7 +27,20 @@ export class AppComponent {
   }
 
   recepcion(fl: FileList) {
-    console.log(fl)
+    fl["forEach"](item => {
+      const partes = item.name.split(".")
+      const extension = partes[partes.length-1]
+      const extensionesPermitidas = ["jpg", "jpeg", "gif", "png"]
+
+      if(extensionesPermitidas.indexOf(extension)>-1) {
+        this.archivos.push(item)
+      }
+    })
+    console.log(this.archivos)
+  }
+
+  eliminar(indice: number) {
+    this.archivos.splice(indice, 1)
   }
 
 	ngAfterViewInit() {

@@ -30,4 +30,6 @@
 <div class="zonaArrastre" appSubirArchivo (onHover)="movimiento($event)"
 [ngClass]="{activo: estado}" (onSeleccionados)="recepcion($event)">
 
+<app-archivo *ngFor="let file of archivos; let indice=index" [archivo]="file" [nombre]="file.name" [indice]="indice" (onBorrar)="eliminar($event)"></app-archivo>
+
 </div>

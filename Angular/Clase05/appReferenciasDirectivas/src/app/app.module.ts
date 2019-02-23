@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ModelComponent } from './model/model.component';
 import { MiDirectiva } from './midirectiva.directive';
 import { SubirArchivoDirective } from './subir-archivo.directive';
+import { ArchivoComponent } from './archivo/archivo.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ModelComponent,
 		MiDirectiva,
-		SubirArchivoDirective
+		SubirArchivoDirective,
+		ArchivoComponent
 	],
 	imports: [
 		BrowserModule,

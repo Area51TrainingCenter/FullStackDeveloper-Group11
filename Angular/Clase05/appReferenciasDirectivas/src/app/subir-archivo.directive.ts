@@ -24,6 +24,7 @@ export class SubirArchivoDirective {
     $event.preventDefault()
     const lista: FileList = $event.dataTransfer.files
     this.onSeleccionados.emit(lista)
+    this.onHover.emit(false)
   }
 
 
