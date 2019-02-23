@@ -23,7 +23,7 @@ export class SubirArchivoDirective {
   @HostListener("drop", ["$event"]) soltando($event) {
     $event.preventDefault()
     const lista: FileList = $event.dataTransfer.files
-    this.onSeleccionados.emit($event.dataTransfer.files)
+    this.onSeleccionados.emit(lista)
   }
 
 
