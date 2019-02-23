@@ -12,7 +12,17 @@ export class AppComponent {
 	color1: string = "greenyellow"
 	color2: string = "skyblue"
 
-	pApellido = "Hidalgo"
+  pApellido = "Hidalgo"
+
+  estado: boolean = false
+
+  movimiento(estado: boolean) {
+    this.estado = estado
+  }
+
+  recepcion(fl: FileList) {
+    console.log(fl)
+  }
 
 	ngAfterViewInit() {
 		this.nombreInput.nativeElement.style = "background-color:yellow"

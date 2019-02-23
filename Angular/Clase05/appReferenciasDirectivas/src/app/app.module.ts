@@ -5,12 +5,14 @@ import { FormsModule } from "@angular/forms"
 import { AppComponent } from './app.component';
 import { ModelComponent } from './model/model.component';
 import { MiDirectiva } from './midirectiva.directive';
+import { SubirArchivoDirective } from './subir-archivo.directive';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ModelComponent,
-		MiDirectiva
+		MiDirectiva,
+		SubirArchivoDirective
 	],
 	imports: [
 		BrowserModule,

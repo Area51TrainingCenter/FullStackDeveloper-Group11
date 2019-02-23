@@ -1,0 +1,10 @@
+.zonaArrastre {
+  width: 500px;
+  height: 400px;
+  border: 3px dashed red
+}
+
+.zonaArrastre.activo {
+  border: 3px solid blue
+}
+

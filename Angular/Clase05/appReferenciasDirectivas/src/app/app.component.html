@@ -23,3 +23,11 @@
 <div mi-directiva="navy" colorHover="pink">Texto de la directiva</div>
 
 <div [mi-directiva]="color1" [colorHover]="color2">Texto de la directiva</div>
+
+<br>
+<br>
+<br>
+<div class="zonaArrastre" appSubirArchivo (onHover)="movimiento($event)"
+[ngClass]="{activo: estado}" (onSeleccionados)="recepcion($event)">
+
+</div>
