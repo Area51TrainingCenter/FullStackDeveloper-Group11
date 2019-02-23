@@ -1,0 +1,25 @@
+<form>
+	<input type="text" name="nombre" #inputNombre>
+	<button type="button" (click)="agregarNombre(inputNombre.value)">Agregar</button>
+	<button type="button" (click)="agregarOtraForma()">Agregar otra forma</button>
+</form>
+
+<form>
+	<!-- 	<input type="text" name="apellido" [value]="pApellido" (input)="pApellido=$event.target.value"> -->
+	<!-- 	<input type="text" name="apellido" [ngModel]="pApellido" (ngModelChange)="pApellido=$event"> -->
+	<!-- 	<input type="text" name="apellido" [ngModel]="pApellido" (ngModelChange)="saludar($event)"> -->
+
+	<input type="text" [(ngModel)]="pApellido" name="apellido">
+
+	<br> {{pApellido}}
+	<br>
+	<button type="button" (click)="agregarApellido()">Agregar apellido</button>
+</form>
+
+<!-- <div mi-directiva colorPorDefecto="navy" colorHover="pink">Texto de la directiva</div>
+
+<div mi-directiva [colorPorDefecto]="color1" [colorHover]="color2">Texto de la directiva</div> -->
+
+<div mi-directiva="navy" colorHover="pink">Texto de la directiva</div>
+
+<div [mi-directiva]="color1" [colorHover]="color2">Texto de la directiva</div>
