@@ -30,6 +30,14 @@
 					<span *ngIf="grupo.get('confirmacion').touched && grupo.get('confirmacion').hasError('confirmacionNoValida')">La
 						contraseña y la confirmación no coinciden</span>
 				</div>
+				<div class="d-flex justify-content-center">
+					<button type="button" class="btn btn-warning" (click)="agregarCorreo()">Agregar correo adicional</button>
+				</div>
+				<div formArrayName="correosAdicionales">
+					<div class="form-group" *ngFor="let ctrl of grupo.get('correosAdicionales').controls; let indice = index">
+						<input type="text" class="form-control" [formControlName]="indice">
+					</div>
+				</div>
 				<div class="d-flex justify-content-end">
 					<button type="submit" class="btn btn-success">Registrar</button>
 				</div>

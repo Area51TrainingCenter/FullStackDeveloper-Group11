@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -19,8 +19,17 @@ export class AppComponent {
 			nombreCompleto: new FormControl(null, Validators.required),
 			correo: new FormControl(null, [Validators.required, this.validadorExpresionRegular(this.expresionRegularCorreo), this.validadorCorreoEmpresarial.bind(this)]),
 			contrasena: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-			confirmacion: new FormControl(null, [Validators.required, this.validatorConfirmacionContrasena])
+			confirmacion: new FormControl(null, [Validators.required, this.validatorConfirmacionContrasena]),
+			correosAdicionales: new FormArray([])
 		})
+	}
+
+	agregarCorreo() {
+		const control = new FormControl(null, [Validators.required, Validators.email]);
+
+		(<FormArray>this.grupo.get("correosAdicionales")).push(control)
+
+		console.log(this.grupo)
 	}
 
 	validadorExpresionRegular(patron): ValidatorFn {
