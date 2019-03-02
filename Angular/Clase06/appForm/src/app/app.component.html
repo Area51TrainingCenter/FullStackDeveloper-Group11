@@ -4,13 +4,20 @@
 			<h3 class="card-title">Registro</h3>
 			<form #formulario="ngForm">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nombre completo" name="nombreCompleto" ngModel required>
+					<input type="text" class="form-control" placeholder="Nombre completo" name="nombreCompleto" ngModel
+					 #nombreCompleto="ngModel" required>
+					<span *ngIf="nombreCompleto.invalid && nombreCompleto.touched">El nombre es obligatorio</span>
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="Correo" name="correo" class="form-control" ngModel email required>
+					<input type="text" placeholder="Correo" name="correo" class="form-control" ngModel email required #correo="ngModel">
+					<span *ngIf="correo.touched && correo.errors && correo.errors.required">El correo es obligatorio</span>
+					<span *ngIf="correo.touched && correo.errors && correo.errors.email">El formato del correo no es válido</span>
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Contraseña" name="contrasena" class="form-control" ngModel required minlength="6">
+					<input type="password" placeholder="Contraseña" name="contrasena" class="form-control" ngModel required minlength="6"
+					 #contrasena="ngModel">
+					<span *ngIf="contrasena.touched && contrasena.errors && contrasena.errors.required">La contraseña es obligatoria</span>
+					<span *ngIf="contrasena.touched && contrasena.errors && contrasena.errors.minlength">Mínimo 6 caracteres</span>
 				</div>
 				<div class="d-flex justify-content-end">
 					<button class="btn btn-success" (click)="registrar(formulario)" [disabled]="formulario.invalid">Registrar</button>
