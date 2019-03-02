@@ -2,25 +2,36 @@
 	<div class="row justify-content-center">
 		<div class="card col-6 mt-3 p-3">
 			<h3 class="card-title">Registro</h3>
-			<form #formulario="ngForm">
+			<form [formGroup]="grupo" (ngSubmit)="registrar()">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nombre completo" name="nombreCompleto" ngModel
-					 #nombreCompleto="ngModel" required>
-					<span *ngIf="nombreCompleto.invalid && nombreCompleto.touched">El nombre es obligatorio</span>
+					<input type="text" class="form-control" placeholder="Nombre completo" name="nombreCompleto" formControlName="nombreCompleto">
+					<span *ngIf="grupo.get('nombreCompleto').touched && grupo.get('nombreCompleto').invalid">El nombre es
+						obligatorio</span>
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="Correo" name="correo" class="form-control" ngModel email required #correo="ngModel">
-					<span *ngIf="correo.touched && correo.errors && correo.errors.required">El correo es obligatorio</span>
-					<span *ngIf="correo.touched && correo.errors && correo.errors.email">El formato del correo no es válido</span>
+					<input type="text" placeholder="Correo" name="correo" class="form-control" formControlName="correo">
+					<span *ngIf="grupo.get('correo').touched && grupo.get('correo').hasError('required')">El correo es obligatorio</span>
+					<span *ngIf="grupo.get('correo').touched && grupo.get('correo').hasError('correoNoValido')">No tiene formato de
+						correo</span>
+					<span *ngIf="grupo.get('correo').touched && grupo.get('correo').hasError('correoNoEmpresarial')">Tiene que ser un
+						correo de la empresa</span>
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Contraseña" name="contrasena" class="form-control" ngModel required minlength="6"
-					 #contrasena="ngModel">
-					<span *ngIf="contrasena.touched && contrasena.errors && contrasena.errors.required">La contraseña es obligatoria</span>
-					<span *ngIf="contrasena.touched && contrasena.errors && contrasena.errors.minlength">Mínimo 6 caracteres</span>
+					<input type="password" placeholder="Contraseña" name="contrasena" class="form-control" formControlName="contrasena">
+					<span *ngIf="grupo.get('contrasena').touched && grupo.get('contrasena').hasError('required')">La contraseña es
+						obligatoria</span>
+					<span *ngIf="grupo.get('contrasena').touched && grupo.get('contrasena').hasError('minlength')">Mínimo 6 caracteres</span>
+				</div>
+				<div class="form-group">
+					<input type="password" placeholder="Confirmación" name="confirmacion" class="form-control" formControlName="confirmacion">
+					<span *ngIf="grupo.get('confirmacion').touched && grupo.get('confirmacion').hasError('required')">La confirmación
+						es
+						obligatoria</span>
+					<span *ngIf="grupo.get('confirmacion').touched && grupo.get('confirmacion').hasError('confirmacionNoValida')">La
+						contraseña y la confirmación no coinciden</span>
 				</div>
 				<div class="d-flex justify-content-end">
-					<button class="btn btn-success" (click)="registrar()" [disabled]="formulario.invalid">Registrar</button>
+					<button type="submit" class="btn btn-success">Registrar</button>
 				</div>
 			</form>
 		</div>
