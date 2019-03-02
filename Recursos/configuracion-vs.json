@@ -1,0 +1,15 @@
+{
+	"workbench.colorTheme": "Cobalt2",
+	"workbench.activityBar.visible": true,
+	"window.zoomLevel": 0,
+	"editor.fontFamily": "Fira Code, 'Segoe UI Emoji'",
+	"editor.fontLigatures": true,
+	"editor.tabSize": 4,
+	"editor.fontSize": 26,
+	"editor.wordWrap": "on",
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"files.autoSave": "onFocusChange",
+	"terminal.integrated.fontSize": 22
+}
