@@ -20,7 +20,7 @@
 					<span *ngIf="contrasena.touched && contrasena.errors && contrasena.errors.minlength">Mínimo 6 caracteres</span>
 				</div>
 				<div class="d-flex justify-content-end">
-					<button class="btn btn-success" (click)="registrar(formulario)" [disabled]="formulario.invalid">Registrar</button>
+					<button class="btn btn-success" (click)="registrar()" [disabled]="formulario.invalid">Registrar</button>
 				</div>
 			</form>
 		</div>
