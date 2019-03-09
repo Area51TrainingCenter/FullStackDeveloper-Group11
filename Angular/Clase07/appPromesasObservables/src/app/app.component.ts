@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  usuarios: Promise<any>
+  usuarios: [] = []
   fotos: [] = []
 
   ajax(url, resolve, reject) {
@@ -26,26 +26,29 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
-
     const promesa = new Promise((resolve, reject) => {
       this.ajax("http://jsonplaceholder.typicode.com/posts", resolve, reject)
     })
 
-    this.usuarios = promesa.then()
-
     promesa
+      .then(
+        (data: any) => {
+          this.usuarios = data
+
+          const promesaFotos = new Promise((resolve, reject) => {
+            this.ajax("http://jsonplaceholder.typicode.com/photos", resolve, reject)
+          })
+
+          return promesaFotos
+        }
+      )
+      .then(
+        (data: any) => this.fotos = data
+      )
       .catch(
-        error => console.log("PROMESA RECHAZADA", error)
+        error => console.log(error)
       )
 
-    const promesaFotos = new Promise((resolve, reject) => {
-      this.ajax("http://jsonplaceholder.typicode.com/photos", resolve, reject)
-    })
-    promesaFotos.then(
-      (data: any) => this.fotos = data,
-      error => console.log(error)
-    )
 
 
 
