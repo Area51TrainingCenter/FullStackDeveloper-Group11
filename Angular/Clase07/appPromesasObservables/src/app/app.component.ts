@@ -30,20 +30,25 @@ export class AppComponent {
       this.ajax("http://jsonplaceholder.typicode.com/posts", resolve, reject)
     })
 
-    promesa
-      .then(
-        (data: any) => {
-          this.usuarios = data
+    const promesaFotos = new Promise((resolve, reject) => {
+      this.ajax("http://jsonplaceholder.typicode.com/photos", resolve, reject)
+    })
 
-          const promesaFotos = new Promise((resolve, reject) => {
-            this.ajax("http://jsonplaceholder.typicode.com/photos", resolve, reject)
-          })
+    /*     Promise.all([promesa, promesaFotos])
+          .then(
+            (respuesta: any[]) => {
+              this.usuarios = respuesta[0]
+              this.fotos = respuesta[1]
+            }
+          )
+          .catch(
+            (error: any) => console.log(error)
+          ) */
 
-          return promesaFotos
-        }
-      )
+
+    Promise.race([promesa, promesaFotos])
       .then(
-        (data: any) => this.fotos = data
+        respuesta => console.log(respuesta)
       )
       .catch(
         error => console.log(error)
