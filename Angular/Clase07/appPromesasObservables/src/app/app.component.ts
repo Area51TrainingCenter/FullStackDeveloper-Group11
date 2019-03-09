@@ -28,7 +28,7 @@ export class AppComponent {
 
       xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          resolve(xhr.responseText)
+          resolve(JSON.parse(xhr.responseText))
           //console.log(xhr.responseText)
         } else if (this.readyState == 4) {
           reject({ status: this.status, message: this.statusText })
@@ -42,12 +42,24 @@ export class AppComponent {
 
     })
 
-    promesa.then(
-      (data: string) => {
-        this.usuarios = JSON.parse(data)
-      },
-      error => console.log("PROMESA RECHAZADA", error)
-    )
+    /*     promesa.then(
+          (data: string) => {
+            this.usuarios = JSON.parse(data)
+          },
+          error => console.log("PROMESA RECHAZADA", error)
+        ) */
+
+    promesa
+      .then(
+        (data: any) => {
+          this.usuarios = data
+        }
+      )
+
+    promesa
+      .catch(
+        error => console.log("PROMESA RECHAZADA", error)
+      )
 
 
     const promesaFotos = new Promise((resolve, reject) => {
