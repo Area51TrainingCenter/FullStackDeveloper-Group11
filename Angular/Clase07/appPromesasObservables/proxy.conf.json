@@ -1,0 +1,7 @@
+{
+  "/descargar/*": {
+    "target": "https://laultimaguerrera.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
