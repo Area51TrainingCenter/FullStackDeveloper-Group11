@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   usuarios: [] = []
+  fotos: [] = []
 
   ngOnInit() {
     /*     const promesa = new Promise((resolve, reject) => {
@@ -46,6 +47,25 @@ export class AppComponent {
         this.usuarios = JSON.parse(data)
       },
       error => console.log("PROMESA RECHAZADA", error)
+    )
+
+
+    const promesaFotos = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          resolve(xhr.responseText)
+        } else if (this.readyState == 4) {
+          reject({ status: this.status, message: this.statusText })
+        }
+      }
+      xhr.open("get", "http://jsonplaceholder.typicode.com/photos", true)
+      xhr.send()
+    })
+
+    promesaFotos.then(
+      (data: string) => this.fotos = JSON.parse(data),
+      error => console.log(error)
     )
 
 

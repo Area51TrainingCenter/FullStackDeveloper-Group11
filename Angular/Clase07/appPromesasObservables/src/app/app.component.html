@@ -10,3 +10,18 @@
     <td>{{usuario.title}}</td>
   </tr>
 </table>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Title</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let foto of fotos">
+    <td>{{foto.title}}</td>
+    <td>
+      <img [src]="foto.thumbnailUrl" alt="">
+    </td>
+  </tr>
+</table>
