@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  usuarios: [] = []
+  usuarios: Promise<any>
   fotos: [] = []
 
   ngOnInit() {
@@ -49,12 +49,7 @@ export class AppComponent {
           error => console.log("PROMESA RECHAZADA", error)
         ) */
 
-    promesa
-      .then(
-        (data: any) => {
-          this.usuarios = data
-        }
-      )
+    this.usuarios = promesa.then()
 
     promesa
       .catch(
