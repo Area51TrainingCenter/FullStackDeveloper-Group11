@@ -16,28 +16,33 @@ export class AppComponent {
           observador.next("A los 3s: Vino el del periódico")
         }, 3000)
 
-        setTimeout(() => {
-          observador.next("A los 5s: Alguien tocó la puerta")
-        }, 5000)
+        /* © */
 
         setTimeout(() => {
-          observador.next("A los 10s: Se fue la luz")
+          observador.next("Volví")
+        }, 12000)
+
+        setTimeout(() => {
+          observador.complete()
         }, 10000)
+
+
       }
     )
 
-    this.suscripcion = observable.subscribe(
-      mensaje => console.log(mensaje)
-    )
+    const metodos = {
+      error: error => console.log(error),
+      complete: () => console.log("Fin"),
+      next: mensaje => console.log(mensaje)
+    }
 
-    setTimeout(() => {
-      observable.subscribe(
-        mensaje => console.log(mensaje)
-      )
-    }, 6000)
+    /*     this.suscripcion = observable.subscribe(
+          mensaje => console.log(mensaje),
+          error => console.log(error),
+          () => console.log("Terminé mi jornada")
+        ) */
 
-
-
+    this.suscripcion = observable.subscribe(metodos)
   }
 
   ngOnDestroy() {
