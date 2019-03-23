@@ -11,14 +11,10 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   listar(): Observable<Usuario[]> {
-    if (sessionStorage.getItem("accessToken")) {
-      const headers = new HttpHeaders({
-        "authorization": `Bearer ${sessionStorage.getItem("accessToken")}`
-      })
+    return this.http.get<Usuario[]>("http://test.tibajodemanda.com/user")
+  }
 
-      return this.http.get<Usuario[]>("http://test.tibajodemanda.com/user", { headers })
-    }
-
-    return of([])
+  insertar(usuario: Usuario): Observable<any> {
+    return this.http.post("http://test.tibajodemanda.com/user", usuario)
   }
 }
