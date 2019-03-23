@@ -59,7 +59,10 @@ export class AppComponent {
     if (confirm("¿Está seguro?")) {
       this.cursosService.eliminar(curso)
         .subscribe(
-          () => this.listar()
+          () => this.listar(),
+          error => {
+            this.listar()
+          }
         )
     }
   }
