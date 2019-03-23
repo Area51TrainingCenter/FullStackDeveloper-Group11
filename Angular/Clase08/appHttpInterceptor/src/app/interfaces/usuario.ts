@@ -3,4 +3,5 @@ export interface Usuario {
   correo?: string
   contrasena?: string
   nombreEmpresa?: string
+  gravatar?: string
 }
