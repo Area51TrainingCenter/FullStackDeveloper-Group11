@@ -6,11 +6,12 @@ import { ListadoComponent } from './listado/listado.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
 import { EdicionComponent } from './edicion/edicion.component';
 import { AutenticacionGuard } from './autenticacion.guard';
+import { GuardarGuard } from './guardar.guard';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   {
-    path: "usuarios", canActivateChild: [AutenticacionGuard], component: ListadoComponent, children: [
+    path: "usuarios", canActivateChild: [AutenticacionGuard], component: ListadoComponent, canDeactivate: [GuardarGuard], children: [
       //{ path: "", component: ListadoComponent },
       { path: "nuevo", component: NuevoComponent },
       { path: "edicion", component: EdicionComponent }

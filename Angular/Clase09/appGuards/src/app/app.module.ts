@@ -8,6 +8,8 @@ import { ListadoComponent } from './listado/listado.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
 import { EdicionComponent } from './edicion/edicion.component';
 
+import { ReactiveFormsModule } from "@angular/forms"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { EdicionComponent } from './edicion/edicion.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
