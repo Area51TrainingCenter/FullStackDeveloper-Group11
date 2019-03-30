@@ -1,4 +1,6 @@
+
 import { Component } from '@angular/core';
+import { AutenticacionService } from './servicios/autenticacion.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'appModulizacion';
+  usuarioLogueado: boolean = false
+
+  constructor(private autenticacionService: AutenticacionService) { }
+
+  ngOnInit() {
+    this.usuarioLogueado = this.autenticacionService.estaAutenticado()
+
+    this.autenticacionService.onEstadoUsuario
+      .subscribe(
+        (estado: boolean) => this.usuarioLogueado = estado
+      )
+
+  }
 }

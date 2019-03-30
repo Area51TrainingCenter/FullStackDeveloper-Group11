@@ -5,6 +5,7 @@ import { ClienteRoutingModule } from './cliente-routing.module';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 import { NuevoClienteComponent } from './nuevo-cliente/nuevo-cliente.component';
 import { EdicionClienteComponent } from './edicion-cliente/edicion-cliente.component';
+import { CompartidoModule } from '../compartido/compartido.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EdicionClienteComponent } from './edicion-cliente/edicion-cliente.compo
   ],
   imports: [
     CommonModule,
-    ClienteRoutingModule
+    ClienteRoutingModule,
+    CompartidoModule
   ]
 })
 export class ClienteModule { }
