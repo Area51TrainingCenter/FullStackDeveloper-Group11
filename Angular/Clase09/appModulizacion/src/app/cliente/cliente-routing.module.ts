@@ -3,11 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 import { NuevoClienteComponent } from './nuevo-cliente/nuevo-cliente.component';
 import { EdicionClienteComponent } from './edicion-cliente/edicion-cliente.component';
+import { ClientesResolve } from '../servicios/clientes-resolve.service';
 
 const routes: Routes = [
   {
     path: "", children: [
-      { path: "", component: ListadoClientesComponent },
+      {
+        path: "", component: ListadoClientesComponent, resolve: {
+          datos: ClientesResolve
+        }
+      },
       { path: "nuevo", component: NuevoClienteComponent },
       { path: "edicion", component: EdicionClienteComponent }
     ]

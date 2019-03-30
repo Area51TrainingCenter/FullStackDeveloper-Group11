@@ -4,3 +4,15 @@
 <p>
   {{texto | reducidor}}
 </p>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Correo</th>
+      <th>Contraseña</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let usuario of usuarios">
+    <td>{{usuario.correo}}</td>
+    <td>{{usuario.contrasena}}</td>
+  </tr>
+</table>
