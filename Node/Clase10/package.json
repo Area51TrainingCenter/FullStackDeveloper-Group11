@@ -1,0 +1,19 @@
+{
+  "name": "Clase10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.0"
+  }
+}
