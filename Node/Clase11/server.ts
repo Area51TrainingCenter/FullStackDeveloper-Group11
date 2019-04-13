@@ -1,16 +1,18 @@
 import express = require("express")
 import fs = require("fs")
 import path = require("path")
-import { Request, Response } from "express"
+import { Request, Response, NextFunction } from "express"
 
 const app = express()
 
-app.use("/assets", (req: Request, res: Response) => {
+app.use("/assets", (req: Request, res: Response, next: NextFunction) => {
 	const ruta = path.join(__dirname, "/public/assets", req.url)
 
 	fs.exists(ruta, existe => {
 		if (existe) {
 			res.sendFile(ruta)
+		} else {
+			next()
 		}
 	})
 
