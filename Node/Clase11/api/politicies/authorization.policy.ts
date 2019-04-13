@@ -8,6 +8,7 @@ const authorization = (...rolesAllowed) => {
 		if (rolesAllowed.indexOf(rolUser) >= 0) {
 			return next()
 		}
+
 		const err: IError = new Error("Rol not allowed")
 		err.status = 409
 		next(err)
