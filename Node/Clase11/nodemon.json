@@ -1,6 +1,10 @@
 {
 	"watch": [
-		"server.ts"
+		"server.ts",
+		"handlers",
+		"interfaces",
+		"routes",
+		"api"
 	],
 	"ext": "ts",
 	"exec": "ts-node server"
