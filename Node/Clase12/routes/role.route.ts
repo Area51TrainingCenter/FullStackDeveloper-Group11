@@ -12,10 +12,16 @@ Router.get("/", authenticacion, authorization("ADMIN"),
 	controller.list
 )
 
+Router.get("/page/:page", authenticacion, authorization("ADMIN"),
+	controller.listPagination
+)
+
 Router.put("/:_id", authenticacion, authorization("ADMIN"), controller.update)
 
 Router.post("/", authenticacion, authorization("ADMIN"), controller.insert)
 
 Router.delete("/:_id", authenticacion, authorization("ADMIN"), controller.delete)
+
+
 
 export { Router }

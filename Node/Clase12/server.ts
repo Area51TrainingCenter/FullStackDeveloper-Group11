@@ -12,12 +12,14 @@ mongoose.Promise = global.Promise
 mongoose.connect("mongodb+srv://shidalgo:Perucampeon2022@cluster0-2a0hw.mongodb.net/test?retryWrites=true", { useNewUrlParser: true })
 mongoose.connection.on("connected", () => console.log("Conectado a Mongo"))
 mongoose.connection.on("error", () => console.log("Error de conexión"))
+// Modelos
+require("./api/models/role.model")
+require("./api/models/user.model")
 
 // Declaraciones
 const app = express()
 
-// Modelos
-require("./api/models/role.model")
+
 
 // Middlewares
 app.use(bodyParser.json())

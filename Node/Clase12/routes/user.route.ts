@@ -1,23 +1,20 @@
 import express = require("express")
-import { Request, Response, NextFunction } from "express"
 import { authenticacion } from "../api/politicies/authentication.policy";
 import { authorization } from "../api/politicies/authorization.policy";
+import { UserController } from "../api/controllers/user.controller";
 
 const Router = express.Router()
 
-Router.get("/listar", authenticacion,
-	(req: Request, res: Response) => {
-		res
-			.status(200)
-			.json([
-				{ user: "user01" },
-				{ user: "user02" }
-			])
-	}
+const controller = new UserController()
+
+Router.get("/", authenticacion, authorization("ADMIN"),
+	controller.list
 )
 
-Router.get("/modificar", authenticacion, authorization("ADMIN", "SUPER"), (req: Request, res: Response) => {
-	res.send("User modified")
-})
+Router.put("/:_id", authenticacion, authorization("ADMIN"), controller.update)
+
+Router.post("/", authenticacion, authorization("ADMIN"), controller.insert)
+
+Router.delete("/:_id", authenticacion, authorization("ADMIN"), controller.delete)
 
 export { Router }
