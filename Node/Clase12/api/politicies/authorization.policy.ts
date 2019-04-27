@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { IError } from "../../interfaces/ierror.interface";
 
 const authorization = (...rolesAllowed) => {
-	const rolUser: string = "OPERATOR"
+	const rolUser: string = "ADMIN"
 
 	return (req: Request, res: Response, next: NextFunction) => {
 		if (rolesAllowed.indexOf(rolUser) >= 0) {

@@ -3,7 +3,9 @@ import express = require("express")
 import { notFound, general } from "./handlers/errors.handler";
 import { Router as routerUser } from "./routes/user.route"
 import { Router as routerIndex } from "./routes/index.route"
+import { Router as routerRole } from "./routes/role.route"
 import mongoose = require("mongoose")
+import bodyParser = require("body-parser")
 
 // Database
 mongoose.Promise = global.Promise
@@ -16,6 +18,10 @@ const app = express()
 
 // Modelos
 require("./api/models/role.model")
+
+// Middlewares
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Rutas
 app.use(express.static("./public"))
