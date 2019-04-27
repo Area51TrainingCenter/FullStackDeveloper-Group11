@@ -6,6 +6,8 @@ export class Generic {
 		this.model = model
 		this.list = this.list.bind(this)
 		this.insert = this.insert.bind(this)
+		this.update = this.update.bind(this)
+		this.delete = this.delete.bind(this)
 	}
 
 	async list(req: Request, res: Response) {
@@ -33,7 +35,28 @@ export class Generic {
 			})
 	}
 
-	update() { }
+	async update(req: Request, res: Response) {
+		const data = req.body
+		const _id = req.params._id
 
-	delete() { }
+		await this.model.findOneAndUpdate({ _id }, data)
+
+		res
+			.json({
+				status: 200,
+				message: "document updated"
+			})
+	}
+
+	async delete(req: Request, res: Response) {
+		const _id = req.params._id
+
+		await this.model.findOneAndRemove({ _id })
+
+		res
+			.json({
+				status: 200,
+				message: "document deleted"
+			})
+	}
 }

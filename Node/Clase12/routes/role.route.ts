@@ -12,14 +12,10 @@ Router.get("/", authenticacion, authorization("ADMIN"),
 	controller.list
 )
 
-Router.put("/:id", authenticacion, authorization("ADMIN"), (req: Request, res: Response) => {
-	res.send("Role modified")
-})
+Router.put("/:_id", authenticacion, authorization("ADMIN"), controller.update)
 
 Router.post("/", authenticacion, authorization("ADMIN"), controller.insert)
 
-Router.delete("/:id", authenticacion, authorization("ADMIN"), (req: Request, res: Response) => {
-	res.send("Role deleted")
-})
+Router.delete("/:_id", authenticacion, authorization("ADMIN"), controller.delete)
 
 export { Router }
