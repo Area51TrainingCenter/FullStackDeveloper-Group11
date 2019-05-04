@@ -7,14 +7,14 @@ const Router = express.Router()
 
 const controller = new UserController()
 
-Router.get("/", authenticacion, authorization("ADMIN"),
+Router.get("/", authenticacion, authorization("ADMIN", "OPERATOR"),
 	controller.list
 )
 
-Router.put("/:_id", authenticacion, authorization("ADMIN"), controller.update)
+Router.put("/:_id", authenticacion, authorization("ADMIN", "OPERATOR"), controller.update)
 
-Router.post("/", authenticacion, authorization("ADMIN"), controller.insert)
+Router.post("/", controller.insert)
 
-Router.delete("/:_id", authenticacion, authorization("ADMIN"), controller.delete)
+Router.delete("/:_id", authenticacion, authorization("ADMIN", "OPERATOR"), controller.delete)
 
 export { Router }

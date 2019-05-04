@@ -1,5 +1,4 @@
 import express = require("express")
-import { Request, Response, NextFunction } from "express"
 import { authenticacion } from "../api/politicies/authentication.policy";
 import { authorization } from "../api/politicies/authorization.policy";
 import { RoleController } from "../api/controllers/role.controller";
@@ -8,7 +7,7 @@ const Router = express.Router()
 
 const controller = new RoleController()
 
-Router.get("/", authenticacion, authorization("ADMIN"),
+Router.get("/",
 	controller.list
 )
 

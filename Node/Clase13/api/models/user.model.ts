@@ -16,6 +16,10 @@ const esquema = new mongoose.Schema({
 		required: true,
 		trim: true
 	},
+	refreshToken: {
+		type: String,
+		required: true
+	},
 	roles: [{
 		type: mongoose.Schema.ObjectId,
 		ref: "Rol"

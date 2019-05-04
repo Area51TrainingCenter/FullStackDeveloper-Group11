@@ -1,19 +1,26 @@
 import { Generic } from "./generic.controller";
 import User from "../models/user.model";
 import { Request, Response } from "express"
+import { createRefreshToken } from "../../utils/tokens";
 
 export class UserController extends Generic {
 	constructor() {
 		super(User)
 	}
 
-	/* async list(req: Request, res: Response) {
-		const results = await User.find().populate("roles")
+	async insert(req: Request, res: Response) {
+		const data = req.body
+		data.refreshToken = createRefreshToken()
 
-		res.json({
-			status: 200,
-			message: "list",
-			results
-		})
-	} */
+		const documento = new User(data)
+		await documento.save()
+
+		res
+			.status(201)
+			.json({
+				status: 201,
+				message: "document inserted",
+				result: documento
+			})
+	}
 }

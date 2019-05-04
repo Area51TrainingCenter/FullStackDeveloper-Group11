@@ -25,4 +25,28 @@ export class AuthController {
 		}
 
 	}
+
+	async newAccessToken(request: Request, response: Response) {
+		const refreshToken = request.body.refreshToken.trim()
+
+		console.log(refreshToken)
+
+		const user = await User.findOne({ refreshToken })
+
+		if (user) {
+			const accessToken = createAccessToken(user._id, user.nombre)
+
+			response.json({
+				status: 200,
+				result: { accessToken }
+			})
+		} else {
+			response
+				.status(409)
+				.json({
+					status: 409,
+					message: "Refresh token is invalid"
+				})
+		}
+	}
 }

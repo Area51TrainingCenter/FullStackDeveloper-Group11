@@ -12,7 +12,7 @@ const esquema = new mongoose.Schema({
 		toObject: { virtuals: true }
 	})
 
-esquema.virtual("usuario", {
+/* esquema.virtual("usuario", {
 	ref: "User",
 	localField: "_id",
 	foreignField: "roles"
@@ -23,7 +23,7 @@ function autoPopulate(next) {
 	next()
 }
 
-esquema.pre("find", autoPopulate)
+esquema.pre("find", autoPopulate) */
 
 esquema.statics.listPagination = function (page: number, size: number) {
 	const skip = page * size

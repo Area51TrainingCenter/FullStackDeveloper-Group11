@@ -2,17 +2,15 @@ import jwt = require("jwt-simple")
 import randToken = require("rand-token")
 import moment = require("moment")
 
-const palabraSecreta = "ElMundo3sAnch0YAjenosegunCiroaleGria"
-
 const createAccessToken = (_id: string, nombre: string) => {
 	const payload = {
 		_id,
 		nombre,
 		iat: moment().unix(),
-		exp: moment().add(45, "seconds").unix()
+		exp: moment().add(100, "seconds").unix()
 	}
 
-	const accessToken = jwt.encode(payload, palabraSecreta)
+	const accessToken = jwt.encode(payload, process.env.PALABRA_SECRETA)
 
 	return accessToken
 }
@@ -26,7 +24,7 @@ const createRefreshToken = () => {
 const validateAccessToken = (accessToken: string): Promise<any> => {
 	const promesa = new Promise((resolve, reject) => {
 		try {
-			const payload = jwt.decode(accessToken, palabraSecreta)
+			const payload = jwt.decode(accessToken, process.env.PALABRA_SECRETA)
 
 			resolve(payload)
 		} catch (error) {
